@@ -1,0 +1,50 @@
+import React from 'react';
+import styled from 'styled-components';
+import { theme } from 'styled-tools';
+
+const Slider = ({className, min=0, max=100, onChange=()=>{}, value=0}) => 
+<div className={className}>
+    <input type="range" className='slider' min={min} max={max} onChange={onChange} value={value} />
+</div>
+
+
+
+export const StyledSlider = styled(Slider)`
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: ${theme('dims.slider.height')};
+  border-radius: ${theme('dims.slider.borderRadius')};
+  background: ${theme('colors.slider.bar')};
+  outline: none;
+  opacity: 0.85;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: ${theme('dims.slider.handle.width')};
+  height: ${theme('dims.slider.handle.height')};
+  border-radius: ${theme('dims.slider.handle.borderRadius')};
+  background: ${theme('colors.slider.handle')};
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: ${theme('dims.slider.handle.width')};
+  height: ${theme('dims.slider.handle.height')};
+  border-radius: ${theme('dims.slider.handle.borderRadius')};
+  background: ${theme('colors.slider.handle')};
+  cursor: pointer;
+}
+
+.slider:hover{
+  opacity: 1;
+}
+`;
