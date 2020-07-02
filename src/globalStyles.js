@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     #root {
          width: 100%;
          height: 100%;
-        
+         padding: 0;
          color: ${theme('colors.text')};
          background-color: ${theme('colors.background')};
         

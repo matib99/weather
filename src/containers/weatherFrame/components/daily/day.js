@@ -19,7 +19,7 @@ export const StyledDay = styled(Day)`
   h1{
     font-size: ${theme('fonts.weather.day.fontSizeH1')};
   }
-  
+  cursor: pointer;
   background-color: ${props => theme(`colors.weather.day.${props.selected ? 'selected' : 'basic'}.background`)};
   color: ${props => theme(`colors.weather.day.${props.selected ? 'selected' : 'basic'}.text`)};
   padding: ${theme('dims.weather.day.padding')};

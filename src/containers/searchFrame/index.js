@@ -24,6 +24,10 @@ const SearchFrame = ({className}) => {
     const searchValue = useSelector(searchValueSelector);
     const selectedCity = useSelector(selectedCitySelector);
 
+    useEffect(() => {
+        dispatch(searchWeatherForLocalisationAction());
+    }, []);
+
     return( 
         <div className={className}>
             <StyledAutocomplete

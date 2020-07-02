@@ -10,6 +10,8 @@ const StyledSwitchButton = styled.button`
   width: 50%;
   border-style: none;
   outline: none;
+  
+  cursor: ${props => props.active ? 'default' : 'pointer'};
 
   padding: ${theme('dims.switch.button.padding')};
   margin: ${theme('dims.switch.button.margin')};

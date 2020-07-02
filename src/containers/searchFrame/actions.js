@@ -23,6 +23,9 @@ const getOpenWeatherApiUrl = (lat, lon) =>
 
 export const searchWeatherForCity = (cityName, cityLat, cityLon) => {
     return (dispatch, getState) => {
+        if(cityLat === undefined || cityLon === undefined || cityName === undefined) {
+            return;
+        }
         const citiesHistory = searchHistoryCitiesSelector(getState());
         if(citiesHistory.get(cityName) === undefined) {
             fetch(getOpenWeatherApiUrl(cityLat, cityLon))

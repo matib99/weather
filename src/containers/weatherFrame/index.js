@@ -68,10 +68,6 @@ const WeatherFrame = ({className}) => {
     const onHourChange = ( hour ) => {
         dispatch(selectHourAction( hour ));
     }
-
-    useEffect(() => {
-        dispatch(setWeatherAction(przykladowaPogoda));
-    }, []);
     
     return( 
         <div className={className}>
