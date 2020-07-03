@@ -1,4 +1,5 @@
 export const ADD_CITY_RESULT = "search/ADD_CITY_RESULT";
+export const ADD_LOC_RESULT = "search/ADD_LOC_RESULT";
 export const SEARCH_WEATHER_FOR_CITY = "search/SEARCH_WEATHER_CITY";
 export const SEARCH_WEATHER_FOR_LOCATION = "search/SEARCH_WEATHER_LOCATION";
 export const CHANGE_SELECTED_CITY = "search/CHANGE_SELECTED_CITY";

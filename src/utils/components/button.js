@@ -11,7 +11,7 @@ export const StyledButton = styled.button`
   border-color: ${theme('colors.button.inverted.border')};
   border-style: solid;
   outline: none;
-  
+  cursor: pointer;
   padding: ${theme('dims.button.padding')};
   margin: ${theme('dims.button.margin')};
 

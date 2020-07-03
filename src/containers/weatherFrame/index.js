@@ -16,12 +16,9 @@ import { weatherHourlySelector,
          mostCommonDescriptionHourlySelector,
          nicenessHourlySelector
         } from './selectors';
-
-import { przykladowaPogoda } from './const';
 import { 
         selectDay as selectDayAction,
-        selectHour as selectHourAction,
-        setWeather as setWeatherAction 
+        selectHour as selectHourAction
 } from './actions';
 
 import { 
