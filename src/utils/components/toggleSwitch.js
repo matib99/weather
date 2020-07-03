@@ -25,7 +25,7 @@ const StyledSwitchButton = styled.button`
 
 `;
 
-const ToggleSwitch = ({className, textLeft='OFF', textRight='ON', onClickLeft=()=>{value = false}, onClickRight=()=>{value = true}, value=false}) => 
+const ToggleSwitch = ({className, textLeft='OFF', textRight='ON', onClickLeft=()=>{}, onClickRight=()=>{}, value=false}) => 
 {
     return(
     <div className={className}>

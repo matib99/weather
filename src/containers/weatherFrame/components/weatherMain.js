@@ -7,7 +7,7 @@ const MainWeather = ({className, weather, tempConvert, tempUnits, Content}) =>
   {weather !== undefined ? 
   <div className="content">
     <div>
-      <object type="image/svg+xml" data={`./icons/${weather.getIn(['weather', 0, 'icon'])}.svg`} className="icon" /> <br/>
+      <object alt="weather icon" type="image/svg+xml" data={`./icons/${weather.getIn(['weather', 0, 'icon'])}.svg`} className="icon" /> <br/>
       <p>Icons made by <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
     </div>
     <Content 

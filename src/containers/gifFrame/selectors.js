@@ -2,8 +2,6 @@ import { createSelector } from 'reselect';
 import { prop } from 'ramda';
 
 import { GIF_REDUCER_NAME } from './reducer';
-import { createStore } from 'redux';
-
 
 
 const getGifReducerState = prop(GIF_REDUCER_NAME);

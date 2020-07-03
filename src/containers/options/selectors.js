@@ -2,8 +2,7 @@ import { createSelector } from 'reselect';
 import { prop } from 'ramda';
 
 import { 
-    C, F, DAILY, HOURLY, DARK, LIGHT,
-    CHANGE_DEGREES, CHANGE_FORECAST, CHANGE_THEME
+    C
 } from './const';
 import { OPTIONS_REDUCER_NAME } from './reducer';
 

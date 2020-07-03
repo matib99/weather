@@ -1,7 +1,6 @@
 import { fromJS } from 'immutable';
-import { repeat, range, map } from 'ramda';
 
-import { SELECT_DAY, SET_WEATHER, HOURLY, DAILY ,SELECT_HOUR} from './const';
+import { SELECT_DAY, SET_WEATHER, SELECT_HOUR} from './const';
 
 export const WEATHER_FRAME_REDUCER_NAME = 'WeatherFrame';
 

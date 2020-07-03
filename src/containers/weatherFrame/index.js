@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { map, type } from 'ramda';
-import { get } from 'immutable';
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
 
-import { weatherHourlySelector, 
-         weatherDailySelector, 
-         selectedDayWeatherSelector,
-         selectedDaySelector,
-         nicenessDailySelector,
-         mostCommonDescriptionDailySelector,
-         selectedHourSelector,
-         selectedHourWeatherSelector,
-         mostCommonDescriptionHourlySelector,
-         nicenessHourlySelector
+import {      
+        weatherDailySelector,
+        selectedDaySelector,
+        selectedDayWeatherSelector,
+        nicenessDailySelector,
+        weatherHourlySelector,
+        selectedHourSelector,
+        selectedHourWeatherSelector,
+        nicenessHourlySelector
         } from './selectors';
 import { 
         selectDay as selectDayAction,
@@ -39,13 +36,11 @@ const WeatherFrame = ({className}) => {
     const weatherHourly = useSelector(weatherHourlySelector);
     const selectedHour = useSelector(selectedHourSelector);
     const selectedHourWeather = useSelector(selectedHourWeatherSelector);
-    const mostCommonDescriptionHourly = useSelector(mostCommonDescriptionHourlySelector);
     
 
     const weatherDaily = useSelector(weatherDailySelector);
     const selectedDay = useSelector(selectedDaySelector);
     const selectedDayWeather = useSelector(selectedDayWeatherSelector);
-    const mostCommonDescriptionDaily = useSelector(mostCommonDescriptionDailySelector);
     
     
     const nicenessDaily = useSelector(nicenessDailySelector)

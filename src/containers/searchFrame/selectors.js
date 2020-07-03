@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 import { prop } from 'ramda';
 
 import { SEARCH_REDUCER_NAME } from './reducer';
-import { createStore } from 'redux';
 
 
 const getSearchReducerState = prop(SEARCH_REDUCER_NAME);

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
-import { KtoC } from '../../../../utils/temperature'
 import { getDayOfTheWeek } from '../../../../utils/datetime'
 
 const Day = ({ className , selected, weather, onClick, tempConvert, tempUnits}) => 

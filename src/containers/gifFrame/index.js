@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { map, type } from 'ramda';
-import { get } from 'immutable';
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
 
@@ -23,15 +21,12 @@ import {
     mostCommonDescriptionHourlySelector
 } from '../weatherFrame/selectors';
 
-import { currentGifSelector, currentGifIDSelector  } from './selectors';
-
-import { StyledButton } from '../../utils/components/button';
+import { currentGifSelector} from './selectors';
 
 
 const GifFrame = ({className}) => {
     const dispatch = useDispatch();
     const currentGif = useSelector(currentGifSelector);
-    const currentID = useSelector(currentGifIDSelector);
     
     const forecast = useSelector(forecastSelector);
     const dailyPhrase = useSelector(mostCommonDescriptionDailySelector);

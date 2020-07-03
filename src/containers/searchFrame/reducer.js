@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import { repeat, range, map } from 'ramda';
 
 import { ADD_CITY_RESULT, ADD_LOC_RESULT, CHANGE_SEARCH_VALUE, CHANGE_SELECTED_CITY } from './const';
 
