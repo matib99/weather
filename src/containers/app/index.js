@@ -22,8 +22,6 @@ import { lightTheme, darkTheme } from '../../themes';
 import { GlobalStyle } from '../../globalStyles';
 
 
-
-
 const DEBUG = true;
 
 const reducer = createReducer();

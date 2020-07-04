@@ -6,6 +6,11 @@ import { SEARCH_REDUCER_NAME } from './reducer';
 
 const getSearchReducerState = prop(SEARCH_REDUCER_NAME);
 
+export const loadingSelector = createSelector(
+    getSearchReducerState,
+    (search) => search.get('loading')
+)
+
 export const searchHistorySelector = createSelector(
     getSearchReducerState,
     (search) => search.get('history')

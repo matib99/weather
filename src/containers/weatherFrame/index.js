@@ -24,6 +24,10 @@ import {
     degreesSelector
 } from '../options/selectors'
 
+import {
+    loadingSelector
+} from '../searchFrame/selectors';
+
 import { 
     DAILY, C
 } from '../options/const';
@@ -43,13 +47,14 @@ const WeatherFrame = ({className}) => {
     const selectedDayWeather = useSelector(selectedDayWeatherSelector);
     
     
-    const nicenessDaily = useSelector(nicenessDailySelector)
-    const nicenessHourly = useSelector(nicenessHourlySelector)
+    const nicenessDaily = useSelector(nicenessDailySelector);
+    const nicenessHourly = useSelector(nicenessHourlySelector);
 
     const tempConverter = useSelector(degreesConventerSelector);
-    const tempUnits = useSelector(degreesSelector)
+    const tempUnits = useSelector(degreesSelector);
     const forecast = useSelector(forecastSelector);
 
+    const loading = useSelector(loadingSelector);
 
     const dispatch = useDispatch();
 
@@ -73,6 +78,7 @@ const WeatherFrame = ({className}) => {
                         selectedDayID={selectedDay}
                         tempConvert={tempConverter}
                         tempUnits={(tempUnits === C) ? 'C' : 'F'}
+                        loading={loading}
                     />
                 : 
                     <Hourly
@@ -82,6 +88,7 @@ const WeatherFrame = ({className}) => {
                         max={weatherHourly.size - 1}
                         tempConvert={tempConverter}
                         tempUnits={(tempUnits === C) ? 'C' : 'F'}
+                        loading={loading}
                     />       
             }
             <h1>{forecast === DAILY ? nicenessDaily.niceness : nicenessHourly.niceness}</h1>

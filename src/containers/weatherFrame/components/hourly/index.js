@@ -26,13 +26,14 @@ const SliderWrapper = styled.div`
     margin: 20px;
 `;
 
-export const Hourly = ({handleHourChange, selectedWeather, max, selectedHour, tempConvert, tempUnits}) => 
+export const Hourly = ({handleHourChange, selectedWeather, max, selectedHour, tempConvert, tempUnits, loading}) => 
     <Wrapper>
         <StyledMainWeather
             Content={HourlyMainContent}
             weather={selectedWeather}
             tempConvert={tempConvert}
             tempUnits={tempUnits}
+            loading={loading}
         />
         <SliderWrapper>
               <StyledSlider min='0' max={max} onChange={handleHourChange} value={selectedHour}  />

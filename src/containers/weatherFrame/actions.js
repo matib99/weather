@@ -14,4 +14,3 @@ export const selectHour = ( selectedHour ) => ({
     type: SELECT_HOUR,
     selectedHour
 })
-

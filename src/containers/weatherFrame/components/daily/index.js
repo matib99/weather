@@ -23,13 +23,14 @@ const DaysWrapper = styled.div`
     width: ${theme('dims.weather.main.width')};
 `;
 
-export const Daily = ({dailyWeather, handleClickOnDay, selectedWeather, selectedDayID, tempConvert, tempUnits}) => 
+export const Daily = ({dailyWeather, handleClickOnDay, selectedWeather, selectedDayID, tempConvert, tempUnits, loading}) => 
     <Wrapper>
         <StyledMainWeather
             Content={DailyMainContent}
             weather={selectedWeather} 
             tempConvert={tempConvert} 
             tempUnits={tempUnits}
+            loading={loading}
         />
         <DaysWrapper>
             {

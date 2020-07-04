@@ -7,6 +7,10 @@ import {
     DAILY
 } from '../options/const';
 
+import {
+    INTERVAL
+} from './const';
+
 import { 
     searchGifsByPhrase as searchGifsByPhraseAction,
     nextGif as nextGifAction
@@ -23,11 +27,13 @@ import {
 
 import { currentGifSelector} from './selectors';
 
+import Loader from 'react-loader-spinner';
+
 
 const GifFrame = ({className}) => {
     const dispatch = useDispatch();
     const currentGif = useSelector(currentGifSelector);
-    
+
     const forecast = useSelector(forecastSelector);
     const dailyPhrase = useSelector(mostCommonDescriptionDailySelector);
     const hourlyPhrase = useSelector(mostCommonDescriptionHourlySelector);
@@ -45,7 +51,7 @@ const GifFrame = ({className}) => {
     useEffect(() => {
         const interval = setInterval(() => {
           nextGif()
-        }, 30 * 1000);
+        }, INTERVAL);
         return () => clearInterval(interval);
     }, []);
 
@@ -54,7 +60,15 @@ const GifFrame = ({className}) => {
             {
                 (currentGif !== undefined) 
                 ? <img className="gif" src={currentGif.getIn(['media', 0, 'gif', 'url'])} alt="weather gif" />
-                : <p> gif not avaiable </p>
+                : <div>
+                    <Loader
+                        type="TailSpin"
+                        color="#ED254E"
+                        height={100}
+                        width={100}
+                    />
+                </div>
+                
             }
         </div>
     );

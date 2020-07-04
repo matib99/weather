@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { ADD_CITY_RESULT, ADD_LOC_RESULT, CHANGE_SEARCH_VALUE, CHANGE_SELECTED_CITY } from './const';
+import { ADD_CITY_RESULT, ADD_LOC_RESULT, CHANGE_SEARCH_VALUE, CHANGE_SELECTED_CITY, SET_LOADING } from './const';
 
 export const SEARCH_REDUCER_NAME = 'Search';
 
@@ -10,11 +10,17 @@ const initialSearchState = fromJS({
         locations: {}
     },
     selectedCity: {},
-    searchValue: ""
+    searchValue: "",
+    loading: true
 });
 
 export const searchReducer = (state = initialSearchState, action) => {
     switch (action.type) {
+        case SET_LOADING: {
+            return state.setIn(['loading'], 
+                action.loading
+            );
+        }
         case ADD_CITY_RESULT: {
             return state.setIn(['history','cities', action.city], 
                 fromJS(action.weather)
