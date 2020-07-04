@@ -1,7 +1,6 @@
 import { ADD_CITY_RESULT, ADD_LOC_RESULT, CHANGE_SELECTED_CITY, CHANGE_SEARCH_VALUE, SET_LOADING } from './const';
 import { setWeather } from '../weatherFrame/actions';
 import { searchHistoryCitiesSelector, searchHistoryLocationsSelector } from './selectors';
-import { findAllByTestId } from '@testing-library/react';
 
 const setLoading = (loading) => ({ 
     type: SET_LOADING,

@@ -95,7 +95,5 @@ export const StyledGifFrame = styled(GifFrame)`
         margin: 0 auto;
     }
 
-
-    /* color: green; */
 `;
 

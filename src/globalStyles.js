@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from 'styled-tools';
 
-/* eslint no-unused-expressions: 0 */
 export const GlobalStyle = createGlobalStyle`
     html,
     body,

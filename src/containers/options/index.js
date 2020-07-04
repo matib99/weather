@@ -79,6 +79,5 @@ export const StyledOptions = styled(Options)`
     height: ${theme('dims.options.height')};
     margin: ${theme('dims.options.margin')};
 
-    /* color: green; */
 `;
 

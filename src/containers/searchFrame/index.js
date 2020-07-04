@@ -72,7 +72,5 @@ export const StyledSearchFrame = styled(SearchFrame)`
     width: ${theme('dims.search.width')};
     height: ${theme('dims.search.height')};
     margin: ${theme('dims.search.margin')};
-
-    /* color: green; */
 `;
 
