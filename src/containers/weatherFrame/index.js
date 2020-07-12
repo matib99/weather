@@ -35,17 +35,15 @@ import {
 import { Daily } from './components/daily';
 import { Hourly } from './components/hourly';
 
-const WeatherFrame = ({className}) => {
+export const WeatherFrame = () => {
 
     const weatherHourly = useSelector(weatherHourlySelector);
     const selectedHour = useSelector(selectedHourSelector);
     const selectedHourWeather = useSelector(selectedHourWeatherSelector);
     
-
     const weatherDaily = useSelector(weatherDailySelector);
     const selectedDay = useSelector(selectedDaySelector);
     const selectedDayWeather = useSelector(selectedDayWeatherSelector);
-    
     
     const nicenessDaily = useSelector(nicenessDailySelector);
     const nicenessHourly = useSelector(nicenessHourlySelector);
@@ -67,7 +65,7 @@ const WeatherFrame = ({className}) => {
     }
     
     return( 
-        <div className={className}>
+        <StyledWeatherFrame>
             {
                 (forecast === DAILY) 
                 ?
@@ -92,14 +90,12 @@ const WeatherFrame = ({className}) => {
                     />       
             }
             <h1>{forecast === DAILY ? nicenessDaily.niceness : nicenessHourly.niceness}</h1>
-        </div>
+        </StyledWeatherFrame>
     );
 };
 
 
-
-
-export const StyledWeatherFrame = styled(WeatherFrame)`
+const StyledWeatherFrame = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
 
-import { StyledToggleSwitch } from '../../utils/components/toggleSwitch';
+import { ToggleSwitch } from '../../utils/components/toggleSwitch';
 import { F, C, DARK, LIGHT, DAILY, HOURLY} from './const';
 import { 
     changeDegrees as changeDegreesAction,
@@ -13,15 +13,15 @@ import {
 import { degreesSelector, forecastSelector, themeSelector  } from './selectors';
 
 
-const Options = ({className}) => {
+export const Options = () => {
     const dispatch = useDispatch();
     const degrees = useSelector(degreesSelector);
     const forecast = useSelector(forecastSelector);
     const theme = useSelector(themeSelector);
         
     return( 
-        <div className={className}>
-            <StyledToggleSwitch 
+        <StyledOptions>
+            <ToggleSwitch 
                 textLeft='C'
                 textRight='F'
                 onClickLeft={()=>{ 
@@ -34,7 +34,7 @@ const Options = ({className}) => {
                 }}
                 value={degrees === F}
             />
-            <StyledToggleSwitch 
+            <ToggleSwitch 
                 textLeft='48h'
                 textRight='7d'
                 onClickLeft={()=>{ 
@@ -47,7 +47,7 @@ const Options = ({className}) => {
                 }}
                 value={forecast === DAILY}
             />
-            <StyledToggleSwitch 
+            <ToggleSwitch 
                 textLeft='Light'
                 textRight='Dark'
                 onClickLeft={()=>{ 
@@ -60,13 +60,13 @@ const Options = ({className}) => {
                 }}
                 value={theme === DARK}
             />
-        </div>
+        </StyledOptions>
     );
 };
 
 
 
-export const StyledOptions = styled(Options)`
+const StyledOptions = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

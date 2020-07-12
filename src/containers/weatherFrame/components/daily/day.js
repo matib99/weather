@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { theme } from 'styled-tools';
 import { getDayOfTheWeek } from '../../../../utils/datetime'
 
-const Day = ({ className , selected, weather, onClick, tempConvert, tempUnits}) => 
-          <div onClick={onClick} className={className}>
+export const Day = ({selected, weather, onClick, tempConvert, tempUnits}) => 
+          <StyledDay onClick={onClick} selected={selected}>
             <h1> {getDayOfTheWeek(weather.get('dt'))} </h1>
             <p> {`${weather.getIn(['weather', 0, 'main'])}`} </p>
             <p> {`${tempConvert(weather.getIn(['temp', 'day']))} ${tempUnits}`} </p>
-          </div>;
+          </StyledDay>;
 
 
-export const StyledDay = styled(Day)`
+const StyledDay = styled.div`
   p{
     font-size: ${theme('fonts.weather.day.fontSizeP')};
   }

@@ -16,7 +16,7 @@ import { searchValueSelector, selectedCitySelector  } from './selectors';
 
 import { StyledButton } from '../../utils/components/button';
 
-const SearchFrame = ({className}) => {
+export const SearchFrame = () => {
     const dispatch = useDispatch();
     const searchValue = useSelector(searchValueSelector);
     const selectedCity = useSelector(selectedCitySelector);
@@ -26,7 +26,7 @@ const SearchFrame = ({className}) => {
     }, []);
 
     return( 
-        <div className={className}>
+        <StyledSearchFrame>
             <StyledAutocomplete
                 citiesList={citiesdata}
                 searchValue={searchValue}
@@ -55,13 +55,13 @@ const SearchFrame = ({className}) => {
 
                 
             }
-        </div>
+        </StyledSearchFrame>
     );
 };
 
 
 
-export const StyledSearchFrame = styled(SearchFrame)`
+const StyledSearchFrame = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

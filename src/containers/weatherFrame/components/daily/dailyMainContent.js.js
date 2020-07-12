@@ -3,8 +3,8 @@ import { timeConverter } from '../../../../utils/datetime';
 
 
 
-export const DailyMainContent = ( {weather, tempConvert, tempUnits}) =>
-<div className="textContent">
+export const DailyMainContent = ( {className, weather, tempConvert, tempUnits}) =>
+<div className={className}>
   <h1> {`${timeConverter(weather.getIn(['dt']))}`} </h1>
   <p> {`Weather: ${weather.getIn(['weather', 0, 'description'])}`} </p>
   <p> {`Day Temperature: ${ tempConvert(weather.getIn(['temp', 'day']))} ${tempUnits}`} </p>

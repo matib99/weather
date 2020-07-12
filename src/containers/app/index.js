@@ -5,10 +5,10 @@ import thunk from 'redux-thunk';
 
 import { Provider, useSelector } from 'react-redux';
 
-import { StyledWeatherFrame } from '../weatherFrame';
-import { StyledSearchFrame } from '../searchFrame';
-import { StyledGifFrame } from '../gifFrame';
-import { StyledOptions } from '../options';
+import { WeatherFrame } from '../weatherFrame';
+import { SearchFrame } from '../searchFrame';
+import { GifFrame } from '../gifFrame';
+import { Options } from '../options';
 
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
@@ -21,6 +21,11 @@ import { lightTheme, darkTheme } from '../../themes';
 
 import { GlobalStyle } from '../../globalStyles';
 
+import { createEpicMiddleware } from 'redux-observable';
+
+import { rootEpic } from './epics';
+
+const epicMiddleware = createEpicMiddleware();
 
 const DEBUG = true;
 
@@ -30,63 +35,60 @@ let composeEnhancers, store;
 
 if (DEBUG) {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    store = createStore(reducer, undefined, composeEnhancers(applyMiddleware(thunk)));
+    store = createStore(reducer, undefined, composeEnhancers(applyMiddleware(thunk), applyMiddleware(epicMiddleware)));
 } else {
     composeEnhancers = compose;
-    store = createStore(reducer, undefined, composeEnhancers(applyMiddleware(thunk)));
+    store = createStore(reducer, undefined, composeEnhancers(applyMiddleware(thunk), applyMiddleware(epicMiddleware)));
 }
 
+epicMiddleware.run(rootEpic);
 
-const Content = ({className}) => {
+
+
+
+const Content = () => {
   const currThemeN = useSelector(themeSelector);
   const currTheme = (currThemeN === DARK) ? darkTheme : lightTheme;
   return(
     <ThemeProvider theme={currTheme}>
       <GlobalStyle />
-      <div className={className}>
-        <div className="allWrapper">
-          <StyledSearchFrame />
-          <div className="mainWrapper">
-            <StyledWeatherFrame />
-            <div className="rightWrapper">
-              <StyledOptions />
-              <StyledGifFrame />
-            </div>
-          </div>
-        </div>
-      </div>
+        <AllWrapper>
+          <SearchFrame />
+          <MainWrapper>
+            <WeatherFrame />
+            <RightWrapper>
+              <Options />
+              <GifFrame />
+            </RightWrapper>
+          </MainWrapper>
+        </AllWrapper>
     </ThemeProvider>
   )};
   
-
-const StyledContent = styled(Content)`
-  .allWrapper{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mainWrapper{
-    display: flex;
-    flex-direction: row;
-    height: ${theme('dims.weather.wrapperHeight')};
-    margin: 0 auto;
-  }
-
-  .rightWrapper{
-    display: flex;
-    flex-direction: column;
-    width: ${theme('dims.options.width')};
-  }
+const AllWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: ${theme('dims.weather.wrapperHeight')};
+  margin: 0 auto;
+`
 
+const RightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: ${theme('dims.options.width')};
+`
 
 
 const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <StyledContent />
+        <Content />
       </Provider>
     </div>
   );

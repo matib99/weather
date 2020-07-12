@@ -38,3 +38,9 @@ export const phraseSelector = createSelector(
     getGifReducerState,
     (gifState) => gifState.get('phrase')
 )
+
+export const loadingSelector = createSelector(
+    getGifReducerState,
+    currentGifSelector,
+    (gifState, id) => (gifState.get('loading') || (id === undefined))
+)

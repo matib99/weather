@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
-import { StyledSlider } from '../../../../utils/components/slider';
+import { Slider } from '../../../../utils/components/slider';
 import { HourlyMainContent } from './hourlyMainContent';
-import { StyledMainWeather } from '../weatherMain';
+import { MainWeather } from '../weatherMain';
 import { getDayAndTime } from '../../../../utils/datetime';
 
-const Wrapper = styled.div`
+const StyledHourly = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -27,21 +27,21 @@ const SliderWrapper = styled.div`
 `;
 
 export const Hourly = ({handleHourChange, selectedWeather, max, selectedHour, tempConvert, tempUnits, loading}) => 
-    <Wrapper>
-        <StyledMainWeather
-            Content={HourlyMainContent}
+    <StyledHourly>
+        <MainWeather
+            TextContent={HourlyMainContent}
             weather={selectedWeather}
             tempConvert={tempConvert}
             tempUnits={tempUnits}
             loading={loading}
         />
         <SliderWrapper>
-              <StyledSlider min='0' max={max} onChange={handleHourChange} value={selectedHour}  />
+            <Slider min='0' max={max} onChange={handleHourChange} value={selectedHour}  />
         </SliderWrapper> 
         <h1>{(selectedWeather !== undefined ) 
               ?  getDayAndTime(selectedWeather.get('dt'))
               : ''}</h1>
-    </Wrapper>
+    </StyledHourly>
 
 
 

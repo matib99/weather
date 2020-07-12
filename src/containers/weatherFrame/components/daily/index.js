@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'styled-tools';
-import { StyledDay } from './day';
+import { Day } from './day';
 import { DailyMainContent } from './dailyMainContent.js';
-import { StyledMainWeather } from '../weatherMain';
+import { MainWeather } from '../weatherMain';
 
-const Wrapper = styled.div`
+const StyledDaily = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -24,9 +24,9 @@ const DaysWrapper = styled.div`
 `;
 
 export const Daily = ({dailyWeather, handleClickOnDay, selectedWeather, selectedDayID, tempConvert, tempUnits, loading}) => 
-    <Wrapper>
-        <StyledMainWeather
-            Content={DailyMainContent}
+    <StyledDaily>
+        <MainWeather
+            TextContent={DailyMainContent}
             weather={selectedWeather} 
             tempConvert={tempConvert} 
             tempUnits={tempUnits}
@@ -37,7 +37,7 @@ export const Daily = ({dailyWeather, handleClickOnDay, selectedWeather, selected
                 dailyWeather.map(
                     (weather, id) => {
                         return (  
-                            <StyledDay
+                            <Day
                                 key={`day-${id}`}
                                 selected={selectedDayID === id}
                                 weather={weather}
@@ -50,7 +50,7 @@ export const Daily = ({dailyWeather, handleClickOnDay, selectedWeather, selected
                 )
             }
         </DaysWrapper> 
-    </Wrapper>
+    </StyledDaily>
 
 
 

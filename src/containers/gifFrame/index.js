@@ -12,8 +12,7 @@ import {
 } from './const';
 
 import { 
-    searchGifsByPhrase as searchGifsByPhraseAction,
-    nextGif as nextGifAction
+    getGif as getGifAction
  } from './actions';
 
 import {
@@ -25,14 +24,15 @@ import {
     mostCommonDescriptionHourlySelector
 } from '../weatherFrame/selectors';
 
-import { currentGifSelector} from './selectors';
+import { currentGifSelector, loadingSelector } from './selectors';
 
 import Loader from 'react-loader-spinner';
 
 
-const GifFrame = ({className}) => {
+export const GifFrame = () => {
     const dispatch = useDispatch();
     const currentGif = useSelector(currentGifSelector);
+    const loading = useSelector(loadingSelector);
 
     const forecast = useSelector(forecastSelector);
     const dailyPhrase = useSelector(mostCommonDescriptionDailySelector);
@@ -41,25 +41,25 @@ const GifFrame = ({className}) => {
     const phrase = (forecast === DAILY) ? dailyPhrase : hourlyPhrase;
     
     const nextGif = () => {
-        dispatch(nextGifAction())
+        dispatch(getGifAction(phrase))
     }
 
     useEffect(() => {
-        dispatch(searchGifsByPhraseAction(phrase));
+        dispatch(getGifAction(phrase));
     }, [phrase]);
     
     useEffect(() => {
         const interval = setInterval(() => {
-          nextGif()
+            nextGif()
         }, INTERVAL);
         return () => clearInterval(interval);
-    }, []);
+    }, [phrase]);
 
     return( 
-        <div className={className}>
+        <StyledGifFrame>
             {
-                (currentGif !== undefined) 
-                ? <img className="gif" src={currentGif.getIn(['media', 0, 'gif', 'url'])} alt="weather gif" />
+                (! loading) 
+                ? <StyledGif src={currentGif.getIn(['media', 0, 'gif', 'url'])} alt="weather gif" />
                 : <div>
                     <Loader
                         type="TailSpin"
@@ -70,13 +70,12 @@ const GifFrame = ({className}) => {
                 </div>
                 
             }
-        </div>
+        </StyledGifFrame>
     );
 };
 
 
-
-export const StyledGifFrame = styled(GifFrame)`
+const StyledGifFrame = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -86,14 +85,12 @@ export const StyledGifFrame = styled(GifFrame)`
     width: ${theme('dims.gif.width')};
     height: ${theme('dims.gif.height')};
     margin: ${theme('dims.gif.margin')};;
-
-    .gif{
-        max-width: ${theme('dims.gif.width')};
-        max-height: ${theme('dims.gif.height')};
-        height: fit-content;
-        width: fit-content;
-        margin: 0 auto;
-    }
-
 `;
 
+const StyledGif = styled.img`
+    max-width: ${theme('dims.gif.width')};
+    max-height: ${theme('dims.gif.height')};
+    height: fit-content;
+    width: fit-content;
+    margin: 0 auto;
+`

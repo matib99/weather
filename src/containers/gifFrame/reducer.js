@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { CHANGE_GIF_ARRAY, CHANGE_NEXT_POS, CHANGE_CURRENT_GIF_ID, CHANGE_PHRASE} from './const';
+import { CHANGE_GIF_ARRAY, CHANGE_NEXT_POS, CHANGE_CURRENT_GIF_ID, CHANGE_PHRASE, GET_GIF} from './const';
 
 export const GIF_REDUCER_NAME = 'Gif';
 
@@ -8,7 +8,8 @@ const initialGifState = fromJS({
    gifs: [],
    currentGifID: 0,
    nextPos: '',
-   phrase: ''
+   phrase: '',
+   loading: true
 });
 
 export const gifReducer = (state = initialGifState, action) => {
@@ -24,13 +25,22 @@ export const gifReducer = (state = initialGifState, action) => {
             );
         }
         case CHANGE_CURRENT_GIF_ID: {
-            return state.set('currentGifID', 
+            return state
+            .set('currentGifID', 
                 action.id
+            )
+            .set('loading', 
+            false 
             );
         }
         case CHANGE_PHRASE: {
             return state.set('phrase', 
                 action.phrase
+            );
+        }
+        case GET_GIF: {
+            return state.set('loading', 
+                true
             );
         }
         default:
