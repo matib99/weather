@@ -1,3 +1,10 @@
+# Weather app with gifs
+
+This app was made as a project for my React class at University
+You can see it deployed here:
+https://matib99.github.io/weather/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
