@@ -1,6 +1,7 @@
 # Weather app with gifs
 
-This app was made as a project for my React class at University
+This app was made as a project for my React class at University.
+
 You can see it deployed here:
 https://matib99.github.io/weather/
 
